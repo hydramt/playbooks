@@ -1,0 +1,49 @@
+---
+- hosts: "{{umounthost}}"
+  remote_user: ansible
+
+  tasks:
+
+    name: Stop transmission container
+    docker_container:
+      name: transmission-daemon
+      state: stopped
+
+    name: Stop sickrage container
+    docker_container:
+      name: sickrage
+      state: stopped
+
+    name: Stop couchpotato container
+    docker_container:
+      name: couchpotato
+      state: stopped
+
+    name: Unmount hard drive from {{umounthost}}
+    mount:
+      path: /mnt/hdd1
+      state: unmounted
+
+    name: Waiting 15 secs
+    pause: seconds=15
+
+    name: Mount hard drive to {{unmounthost}}
+    mount:
+      path: /mnt/hdd1
+      src: /dev/mapper/samsungd3-hdd1
+      state: mounted
+
+    name: Start transmission container
+    docker_container:
+      name: transmission-daemon
+      state: started
+
+    name: Start couchpotato container
+    docker_container:
+      name: couchpotato
+      state: started
+
+    name: Start sickrage container
+    docker_container:
+      name: sickrage
+      state: started
