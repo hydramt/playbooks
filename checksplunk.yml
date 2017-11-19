@@ -1,0 +1,5 @@
+---
+- hosts: Hydra
+
+- name: Check Splunk process running
+  shell: "ps -ef | grep splunk"
