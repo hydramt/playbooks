@@ -8,5 +8,5 @@
       shell: "ps -ef | grep splunk"
       register: result
 
-    - debug
+    - debug:
         var: result
