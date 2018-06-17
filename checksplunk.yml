@@ -6,3 +6,7 @@
 
     - name: Check Splunk process running
       shell: "ps -ef | grep splunk"
+      register: result
+
+    - debug
+        var: result
