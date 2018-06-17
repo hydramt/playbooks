@@ -1,5 +1,5 @@
 ---
-- hosts: "{{umounthost}}"
+- hosts: {{umounthost}}
   remote_user: ansible
 
   tasks:
