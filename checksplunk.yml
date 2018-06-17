@@ -5,8 +5,8 @@
   tasks:
 
     - name: Check Splunk process running
-      shell: "ps -ef | grep splunk"
+      shell: "ps -ef | grep splunk | grep -v grep"
       register: result
 
     - debug:
-        var: result
+        var: result.stdout_lines
