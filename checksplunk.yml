@@ -5,7 +5,7 @@
   tasks:
 
     - name: Check Splunk process running
-      shell: "ps -ef | grep splunk"
+      shell: "ps -ef | grep splunk | grep -v splunk"
       register: result
       ignore_errors: true
 
