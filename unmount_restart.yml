@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 - hosts: {{umounthost}}
+=======
+- hosts: app01
+>>>>>>> 00f3deb87d8b5f1c7e17d44ef30a139bf55e9e64
   remote_user: ansible
 
   tasks:
@@ -19,7 +23,7 @@
       name: couchpotato
       state: stopped
 
-    name: Unmount hard drive from {{umounthost}}
+    name: Unmount hard drive from app01
     mount:
       path: /mnt/hdd1
       state: unmounted
@@ -27,10 +31,10 @@
     name: Waiting 15 secs
     pause: seconds=15
 
-    name: Mount hard drive to {{unmounthost}}
+    name: Mount hard drive to app01
     mount:
       path: /mnt/hdd1
-      src: /dev/mapper/samsungd3-hdd1
+      src: app00:/mnt/hdd1
       state: mounted
 
     name: Start transmission container
